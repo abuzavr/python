@@ -1,22 +1,16 @@
-numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-primes = []
-not_primes = []
+def get_matrix(n,m,value):
+    matrix = []
 
-for var1 in numbers:
-    if var1 == 1:
-        continue
-    its_prime = True
+    for i in range(n):
+        row = []
+        for j in range(m):
+            row.append(value)
+            matrix.append(row)
+        return matrix
 
-    for i in range(2, var1):
-        if var1 % i == 0:
-            its_prime = False
-            break
-
-    if its_prime:
-        primes.append(var1)
-
-    else:
-        not_primes.append(var1)
-
-print("Primes:", primes)
-print("Not Primes:", not_primes)
+result1 = get_matrix(2, 2, 10)
+result2 = get_matrix(3, 5, 42)
+result3 = get_matrix(4, 2, 13)
+print(result1)
+print(result2)
+print(result3)

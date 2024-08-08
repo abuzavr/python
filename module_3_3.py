@@ -1,8 +1,8 @@
-def print_params(a = 1, b = 'stroka', c = True):
+def print_params(a = 1, b = 'stroka', c = True): #вызов функции с параметрами
     print(a, b, c)
-values_list = [2, 'spisok', True]
-values_dict = {'a': 3, 'b': 'slovarik', 'c': True}
-values_list_2 = [4, 'wow']
+values_list = [2, 'spisok', True]  #список
+values_dict = {'a': 3, 'b': 'slovarik', 'c': True}  #словарь
+values_list_2 = [4, 'wow'] #ещё один список
 print_params()
 print_params('lol')
 print_params(20, 'noob')
