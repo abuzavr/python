@@ -14,10 +14,9 @@ class Animal:
             self.alive = False
 
 class  Plant:
+    edible = False
     def __init__(self, name):
         self.name = name
-        self.edible = False
-
 
 class Mammal(Animal):
     pass #наследуем метод eat из родительского класса
