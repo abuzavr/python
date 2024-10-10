@@ -1,8 +1,17 @@
 class Animal:
+    alive = True   #Атрибут Класса
+    fed = False
+
     def __init__(self, name):
         self.name = name
-        self.alive = True
-        self.fed = False
+
+    def eat(self, food):
+        if food.edible:
+            print(f'{self.name} съел {food.name}')
+            self.fed = True
+        else:
+            print(f'{self.name} не стал есть {food.name}')
+            self.alive = False
 
 class  Plant:
     def __init__(self, name):
@@ -11,22 +20,10 @@ class  Plant:
 
 
 class Mammal(Animal):
-    def eat(self, food):
-        if food.edible:
-            print(f'{self.name} съел {food.name}')
-            self.fed = True
-        else:
-            print(f'{self.name} не стал есть {food.name}')
-            self.alive = False
+    pass #наследуем метод eat из родительского класса
 
 class Predator(Animal):
-    def eat(self, food):
-        if food.edible:
-            print(f'{self.name} съел {food.name}')
-            self.fed = True
-        else:
-            print(f'{self.name} не стал есть {food.name}')
-            self.alive = False
+    pass #наследуем метод eat из родительского класса
 
 class Flower(Plant):
     pass #Цветы несъедобны
