@@ -1,49 +1,52 @@
-class Animal:
-    alive = True   #Атрибут Класса
-    fed = False
+# Класс Horse описывает лошадь
+class Horse:
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)  # Вызов конструктора следующего класса по MRO
+        self.x_distance = 0  # начальная дистанция по оси X
+        self.sound = 'Frrr'  # звук лошади
 
-    def __init__(self, name):
-        self.name = name
+    # Метод увеличивает пройденную дистанцию
+    def run(self, dx):
+        self.x_distance += dx
 
-    def eat(self, food):
-        if food.edible:
-            print(f'{self.name} съел {food.name}')
-            self.fed = True
-        else:
-            print(f'{self.name} не стал есть {food.name}')
-            self.alive = False
 
-class  Plant:
-    edible = False
-    
-    def __init__(self, name):
-        self.name = name
+# Класс Eagle описывает орла
+class Eagle:
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)  # Вызов конструктора следующего класса по MRO
+        self.y_distance = 0  # начальная высота по оси Y
+        self.sound = 'I train, eat, sleep, and repeat'  # звук орла
 
-class Mammal(Animal):
-    pass #наследуем метод eat из родительского класса
+    # Метод увеличивает высоту полета
+    def fly(self, dy):
+        self.y_distance += dy
 
-class Predator(Animal):
-    pass #наследуем метод eat из родительского класса
 
-class Flower(Plant):
-    pass #Цветы несъедобны
+# Класс Pegasus наследует от Horse и Eagle
+class Pegasus(Horse, Eagle):
+    def __init__(self):
+        super().__init__()  # Вызов super(), который пойдёт по цепочке MRO и инициализирует все родительские классы
 
-class Fruit(Plant):
-    def __init__(self, name):
-        super().__init__(name)
-        self.edible = True
+    # Метод перемещения
+    def move(self, dx, dy):
+        self.run(dx)  # вызов метода run из Horse для перемещения по X
+        self.fly(dy)  # вызов метода fly из Eagle для перемещения по Y
 
-a1 = Predator('Волк с Уолл-Стрит')
-a2 = Mammal('Хатико')
-p1 = Flower('Цветик семицветик')
-p2 = Fruit('Заводной апельсин')
+    # Метод для получения текущей позиции
+    def get_pos(self):
+        return (self.x_distance, self.y_distance)
 
-print(a1.name)
-print(p1.name)
+    # Метод для вывода звука
+    def voice(self):
+        print(self.sound)
 
-print(a1.alive)
-print(a2.fed)
-a1.eat(p1)
-a2.eat(p2)
-print(a1.alive)
-print(a2.fed)
+
+# Пример использования
+p1 = Pegasus()
+
+print(p1.get_pos())  # начальная позиция
+p1.move(10, 15)  # перемещение
+print(p1.get_pos())  # новая позиция
+p1.move(-5, 20)  # ещё одно перемещение
+print(p1.get_pos())  # обновлённая позиция
+p1.voice()  # вывод звука

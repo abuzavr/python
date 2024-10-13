@@ -31,12 +31,11 @@ class Pegasus(Horse, Eagle):
         print(self.sound)
 
 
-# Пример использования
 p1 = Pegasus()
 
-print(p1.get_pos())  # начальная позиция
-p1.move(10, 15)  # перемещение
-print(p1.get_pos())  # новая позиция
-p1.move(-5, 20)  # ещё одно перемещение
-print(p1.get_pos())  # обновлённая позиция
-p1.voice()  # вывод звука
+print(p1.get_pos())
+p1.move(10, 15)
+print(p1.get_pos())
+p1.move(-5, 20)
+print(p1.get_pos())
+p1.voice()
