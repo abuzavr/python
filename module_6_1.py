@@ -1,52 +1,49 @@
-# Класс Horse описывает лошадь
-class Horse:
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)  # Вызов конструктора следующего класса по MRO
-        self.x_distance = 0  # начальная дистанция по оси X
-        self.sound = 'Frrr'  # звук лошади
+class Animal:
+    alive = True   #Атрибут Класса
+    fed = False
 
-    # Метод увеличивает пройденную дистанцию
-    def run(self, dx):
-        self.x_distance += dx
+    def __init__(self, name):
+        self.name = name
 
+    def eat(self, food):
+        if food.edible:
+            print(f'{self.name} съел {food.name}')
+            self.fed = True
+        else:
+            print(f'{self.name} не стал есть {food.name}')
+            self.alive = False
 
-# Класс Eagle описывает орла
-class Eagle:
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)  # Вызов конструктора следующего класса по MRO
-        self.y_distance = 0  # начальная высота по оси Y
-        self.sound = 'I train, eat, sleep, and repeat'  # звук орла
+class  Plant:
+    edible = False
 
-    # Метод увеличивает высоту полета
-    def fly(self, dy):
-        self.y_distance += dy
+    def __init__(self, name):
+        self.name = name
 
+class Mammal(Animal):
+    pass #наследуем метод eat из родительского класса
 
-# Класс Pegasus наследует от Horse и Eagle
-class Pegasus(Horse, Eagle):
-    def __init__(self):
-        super().__init__()  # Вызов super(), который пойдёт по цепочке MRO и инициализирует все родительские классы
+class Predator(Animal):
+    pass #наследуем метод eat из родительского класса
 
-    # Метод перемещения
-    def move(self, dx, dy):
-        self.run(dx)  # вызов метода run из Horse для перемещения по X
-        self.fly(dy)  # вызов метода fly из Eagle для перемещения по Y
+class Flower(Plant):
+    pass #Цветы несъедобны
 
-    # Метод для получения текущей позиции
-    def get_pos(self):
-        return (self.x_distance, self.y_distance)
+class Fruit(Plant):
+    def __init__(self, name):
+        super().__init__(name)
+        self.edible = True
 
-    # Метод для вывода звука
-    def voice(self):
-        print(self.sound)
+a1 = Predator('Волк с Уолл-Стрит')
+a2 = Mammal('Хатико')
+p1 = Flower('Цветик семицветик')
+p2 = Fruit('Заводной апельсин')
 
+print(a1.name)
+print(p1.name)
 
-# Пример использования
-p1 = Pegasus()
-
-print(p1.get_pos())  # начальная позиция
-p1.move(10, 15)  # перемещение
-print(p1.get_pos())  # новая позиция
-p1.move(-5, 20)  # ещё одно перемещение
-print(p1.get_pos())  # обновлённая позиция
-p1.voice()  # вывод звука
+print(a1.alive)
+print(a2.fed)
+a1.eat(p1)
+a2.eat(p2)
+print(a1.alive)
+print(a2.fed)
