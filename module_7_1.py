@@ -13,18 +13,35 @@ class Shop:
         self.__file_name = 'products.txt'
 
     def get_products(self):
-        with open(self.__file_name, 'r', encoding='utf-8') as file:
-            return file.read()
+        file = open(self.__file_name, 'r', encoding='utf-8')
+        products = file.read()
+        file.close()
+        return products
 
     def add(self, *products):
         current_products = self.get_products().split('\n')
-        with open(self.__file_name, 'a', encoding='utf-8') as file:
-            for product in products:
-                if product.__str__() not in current_products:
-                    file.write(product.__str__() + '\n')
-                else:
-                    print(f'Продукт {product.name}, {product.weight}, {product.category} уже есть в магазине')
+        file = open(self.__file_name, 'a', encoding='utf-8')
+        for product in products:
+            if product.__str__() not in current_products:
+                file.write(product.__str__() + '\n')
+            else:
+                print(f'Продукт {product.name}, {product.weight}, {product.category} уже есть в магазине')
+        file.close()
 
+'''
+#используя метод with
+    def get_products(self):
+            with open(self.__file_name, 'r', encoding='utf-8') as file:
+                return file.read()
+
+    def add(self, *products):
+            current_products = self.get_products().split('\n')
+            with open(self.__file_name, 'a', encoding='utf-8') as file:
+                for product in products:
+                    if product.__str__() not in current_products:
+                        file.write(product.__str__() + '\n')
+                    else:
+                        print(f'Продукт {product.name}, {product.weight}, {product.category} уже есть в магазине')'''
 
 
 
