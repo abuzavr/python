@@ -8,7 +8,7 @@ def add_everything_up(a, b):
         else:
             return str(a) + str(b)
     except TypeError as exc:
-        print('Ошибочка вышла')
+        print(f'Ошибочка вышла: {exc}')
 
 
 print(add_everything_up(123.456, 'строка'))
