@@ -1,15 +1,9 @@
-# Импортируем необходимые модули
 from threading import Thread  # Для работы с потоками
 import time  # Для создания задержек
 
 # Создаём класс Knight, который наследуется от класса Thread
 class Knight(Thread):
     def __init__(self, name, power):
-        """
-        Инициализация объекта Knight.
-        :param name: Имя рыцаря (строка)
-        :param power: Сила рыцаря (целое число, сколько врагов он побеждает за день)
-        """
         super().__init__()  # Вызываем конструктор родительского класса Thread
         self.name = name  # Имя рыцаря
         self.power = power  # Сила рыцаря
