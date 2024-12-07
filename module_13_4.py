@@ -5,8 +5,8 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.utils import executor
 import logging
 
-# Укажите токен вашего бота
-API_TOKEN = 'YOUR_BOT_TOKEN'  # Замените YOUR_BOT_TOKEN на токен, выданный @BotFather
+# Токен бота
+API_TOKEN = 'token'
 
 # Настройка логирования
 logging.basicConfig(level=logging.INFO)
