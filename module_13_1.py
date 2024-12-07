@@ -31,3 +31,7 @@ async def start_tournament():
 
     # Запускаем все задачи параллельно
     await asyncio.gather(*tasks)
+
+# Запуск турнира
+if __name__ == "__main__":
+    asyncio.run(start_tournament())
